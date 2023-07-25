@@ -27,13 +27,16 @@ selected_columns.show()
 
 '''
 output: 
-+--------+-------+-------+
-| country|  state|min_age|
-+--------+-------+-------+
-|Corellia|     NA|     48|
-|Tatooine|     NA|     44|
-|     USA|Alabama|     52|
-+--------+-------+-------+
++---------------+---+------+
+|           name|age|salary|
++---------------+---+------+
+|       john_doe| 52| 52000|
+|       jane_doe| 25| 93250|
+|    hans_ulrich| 48|120030|
+| lars_sigardson| 44| 75000|
+|     mary_smith| 18|110000|
+|jessica_O'Brian| 23| 64025|
++---------------+---+------+
 '''
 
 # Function 2: Filtering data
@@ -43,13 +46,13 @@ male_employees.show()
 
 '''
 output: 
-+--------+-------+-------+
-| country|  state|min_age|
-+--------+-------+-------+
-|Corellia|     NA|     48|
-|Tatooine|     NA|     44|
-|     USA|Alabama|     52|
-+--------+-------+-------+
++--------------+-----+------+---+-------+-------+------+
+|          name|index|gender|age|country|  state|salary|
++--------------+-----+------+---+-------+-------+------+
+|      john_doe|  001|  male| 52|    USA|Alabama| 52000|
+|   hans_ulrich|  003|  male| 48|Germany|Bavaria|120030|
+|lars_sigardson|  004|  male| 44| Sweden|Gotland| 75000|
++--------------+-----+------+---+-------+-------+------+
 '''
 
 # Function 3: Grouping and Aggregation
@@ -59,13 +62,15 @@ avg_salary_per_country_state.show()
 
 '''
 output: 
-+--------+-------+-------+
-| country|  state|min_age|
-+--------+-------+-------+
-|Corellia|     NA|     48|
-|Tatooine|     NA|     44|
-|     USA|Alabama|     52|
-+--------+-------+-------+
++-------+----------+----------+
+|country|     state|avg_salary|
++-------+----------+----------+
+| Sweden|   Gotland|   75000.0|
+|England|    Dorset|  110000.0|
+|Germany|   Bavaria|  120030.0|
+|    USA|California|   78637.5|
+|    USA|   Alabama|   52000.0|
++-------+----------+----------+
 '''
 
 # Function 4: Finding the youngest male employee in each country and state combination
@@ -79,13 +84,13 @@ youngest_male_per_country_state.show()
 
 '''
 output: 
-+--------+-------+-------+
-| country|  state|min_age|
-+--------+-------+-------+
-|Corellia|     NA|     48|
-|Tatooine|     NA|     44|
-|     USA|Alabama|     52|
-+--------+-------+-------+
++--------------+-----+------+---+-------+-------+------+
+|          name|index|gender|age|country|  state|salary|
++--------------+-----+------+---+-------+-------+------+
+|   hans_ulrich|  003|  male| 48|Germany|Bavaria|120030|
+|lars_sigardson|  004|  male| 44| Sweden|Gotland| 75000|
+|      john_doe|  001|  male| 52|    USA|Alabama| 52000|
++--------------+-----+------+---+-------+-------+------+
 '''
 
 # Function 5: Joining DataFrames
@@ -95,13 +100,16 @@ joined_df.show()
 
 '''
 output: 
-+--------+-------+-------+
-| country|  state|min_age|
-+--------+-------+-------+
-|Corellia|     NA|     48|
-|Tatooine|     NA|     44|
-|     USA|Alabama|     52|
-+--------+-------+-------+
++-------+----------+---------------+-----+------+---+------+----------+
+|country|     state|           name|index|gender|age|salary|avg_salary|
++-------+----------+---------------+-----+------+---+------+----------+
+| Sweden|   Gotland| lars_sigardson|  004|  male| 44| 75000|   75000.0|
+|England|    Dorset|     mary_smith|  005|female| 18|110000|  110000.0|
+|Germany|   Bavaria|    hans_ulrich|  003|  male| 48|120030|  120030.0|
+|    USA|California|jessica_O'Brian|  006|female| 23| 64025|   78637.5|
+|    USA|California|       jane_doe|  002|female| 25| 93250|   78637.5|
+|    USA|   Alabama|       john_doe|  001|  male| 52| 52000|   52000.0|
++-------+----------+---------------+-----+------+---+------+----------+
 '''
 
 # Stop the SparkSession

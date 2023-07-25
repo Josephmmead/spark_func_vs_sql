@@ -26,14 +26,16 @@ selected_columns.show()
 
 '''
 output: 
-+-----------+---+----------+
-|       name|age|    salary|
-+-----------+---+----------+
-|   john_doe| 52|     52000|
-|   jane_doe| 25|     93250|
-|  hans_solo| 48|   1000000|
-|darth_vader| 44|9999999999|
-+-----------+---+----------+
++---------------+---+------+
+|           name|age|salary|
++---------------+---+------+
+|       john_doe| 52| 52000|
+|       jane_doe| 25| 93250|
+|    hans_ulrich| 48|120030|
+| lars_sigardson| 44| 75000|
+|     mary_smith| 18|110000|
+|jessica_O'Brian| 23| 64025|
++---------------+---+------+
 '''
 
 # Function 2: Filtering data
@@ -43,13 +45,13 @@ male_employees.show()
 
 '''
 output: 
-+-----------+-----+------+---+--------+-------+----------+
-|       name|index|gender|age| country|  state|    salary|
-+-----------+-----+------+---+--------+-------+----------+
-|   john_doe|  001|  male| 52|     USA|Alabama|     52000|
-|  hans_solo|  003|  male| 48|Corellia|     NA|   1000000|
-|darth_vader|  004|  male| 44|Tatooine|     NA|9999999999|
-+-----------+-----+------+---+--------+-------+----------+
++--------------+-----+------+---+-------+-------+------+
+|          name|index|gender|age|country|  state|salary|
++--------------+-----+------+---+-------+-------+------+
+|      john_doe|  001|  male| 52|    USA|Alabama| 52000|
+|   hans_ulrich|  003|  male| 48|Germany|Bavaria|120030|
+|lars_sigardson|  004|  male| 44| Sweden|Gotland| 75000|
++--------------+-----+------+---+-------+-------+------+
 '''
 
 # Function 3: Grouping and Aggregation
@@ -59,14 +61,15 @@ avg_salary_per_country_state.show()
 
 '''
 output: 
-+--------+----------+-------------+
-| country|     state|   avg_salary|
-+--------+----------+-------------+
-|Tatooine|        NA|9.999999999E9|
-|Corellia|        NA|    1000000.0|
-|     USA|California|      93250.0|
-|     USA|   Alabama|      52000.0|
-+--------+----------+-------------+
++-------+----------+----------+
+|country|     state|avg_salary|
++-------+----------+----------+
+| Sweden|   Gotland|   75000.0|
+|England|    Dorset|  110000.0|
+|Germany|   Bavaria|  120030.0|
+|    USA|California|   78637.5|
+|    USA|   Alabama|   52000.0|
++-------+----------+----------+
 '''
 
 # Function 4: Finding the youngest male employee in each country and state combination
@@ -81,13 +84,13 @@ youngest_male_per_country_state.show()
 
 '''
 output: 
-+--------+-------+-------+
-| country|  state|min_age|
-+--------+-------+-------+
-|Corellia|     NA|     48|
-|Tatooine|     NA|     44|
-|     USA|Alabama|     52|
-+--------+-------+-------+
++-------+-------+-------+
+|country|  state|min_age|
++-------+-------+-------+
+|Germany|Bavaria|     48|
+| Sweden|Gotland|     44|
+|    USA|Alabama|     52|
++-------+-------+-------+
 '''
 
 # Function 5: Joining DataFrames using SQL JOIN
@@ -106,14 +109,16 @@ joined_df.show()
 
 '''
 output: 
-+-----------+-----+------+---+--------+----------+----------+-------------+
-|       name|index|gender|age| country|     state|    salary|   avg_salary|
-+-----------+-----+------+---+--------+----------+----------+-------------+
-|darth_vader|  004|  male| 44|Tatooine|        NA|9999999999|9.999999999E9|
-|  hans_solo|  003|  male| 48|Corellia|        NA|   1000000|    1000000.0|
-|   jane_doe|  002|female| 25|     USA|California|     93250|      93250.0|
-|   john_doe|  001|  male| 52|     USA|   Alabama|     52000|      52000.0|
-+-----------+-----+------+---+--------+----------+----------+-------------+
++---------------+-----+------+---+-------+----------+------+----------+
+|           name|index|gender|age|country|     state|salary|avg_salary|
++---------------+-----+------+---+-------+----------+------+----------+
+| lars_sigardson|  004|  male| 44| Sweden|   Gotland| 75000|   75000.0|
+|     mary_smith|  005|female| 18|England|    Dorset|110000|  110000.0|
+|    hans_ulrich|  003|  male| 48|Germany|   Bavaria|120030|  120030.0|
+|jessica_O'Brian|  006|female| 23|    USA|California| 64025|   78637.5|
+|       jane_doe|  002|female| 25|    USA|California| 93250|   78637.5|
+|       john_doe|  001|  male| 52|    USA|   Alabama| 52000|   52000.0|
++---------------+-----+------+---+-------+----------+------+----------+
 '''
 
 # Stop the SparkSession
